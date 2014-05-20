@@ -1,0 +1,44 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+        <title>Hotéis Hasz - Cadastro de Cliente</title>                
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <p:panel header="Cadastro">
+                <h:panelGrid columns ="4" cellpadding="5">
+                    <h:outputText value="Nome" />
+                    <p:inputText id="txtNome"/>
+                    <h:outputText value="Sobrenome" />
+                    <p:inputText id="txtSobrenome"/>
+
+                    <h:outputText value="Sexo" />
+                    <p:selectOneRadio id="cbSexo" value="#{formBean.number}">
+                        <f:selectItem itemLabel="Masculino" itemValue="1" />
+                        <f:selectItem itemLabel="Feminino" itemValue="2" />                        
+                    </p:selectOneRadio>
+
+                    <h:outputText value="Data de Nascimento" />
+                    <p:inputMask id="txtdataNascimento" value="#{maskController.date}" mask="99/99/9999"/>
+
+                    <h:outputText value="CPF"/>
+                    <p:inputMask id="txtCpf" mask="999.999.999-99" validator="util.CpfValidator" value="#{cliente.cpf}"/>
+
+                    <h:outputText value="Senha: " />
+                    <p:password id="txtSenha" value="#{passwordBean.password3}" feedback="true"
+                                promptLabel="Verificação de segurança" weakLabel="Senha fraca"
+                                goodLabel="Senha média" strongLabel="Senha forte" />
+                    <h:outputText value="Repita a senha: " />
+                    <p:password />
+
+                </h:panelGrid>
+                <p:commandButton value="Feito"/>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>

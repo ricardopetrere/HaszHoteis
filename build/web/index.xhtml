@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+        <title>Hasz Hotéis</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:layout style="width:700px;height:280px;" id="layout">
+                <p:layoutUnit position="west" resizable="false" size="350" minSize="350" maxSize="350">
+                    <p:menu styleClass="padrao">
+                        <p:submenu label="Clientes" >
+                            <p:menuitem value="Login"  url="private/login.xhtml" />                    
+                            <p:menuitem value="Promoções"  />                    
+                        </p:submenu>
+                        <p:submenu label="Visitantes">
+                            <p:menuitem value="Cadastro" url="cliente/cadastroCliente.xhtml"/>
+                        </p:submenu>              
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+
+                    <p:graphicImage value="/images/sp_1.jpg"/>
+
+                    aqui
+                </p:layoutUnit>
+            </p:layout>
+
+
+            <p:imageSwitch effect="fade">
+                <ui:repeat   value="#{org.primefaces.examples.view/imageClass.images}" var="ImagemNome">
+                    <p:graphicImage value="/images/#{ImagemNome}" />
+                </ui:repeat>
+            </p:imageSwitch>
+            <br />
+
+            #{OI}
+            #{ImagemNome}
+            
+            aaa
+        </h:form>
+
+        <style>
+            .padrao{
+                font-size: 18px;
+            }
+
+        </style>
+    </h:body>
+</html>
+
