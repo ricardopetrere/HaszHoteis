@@ -2,7 +2,9 @@ package org.primefaces.examples.view;
  
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
 
+@ManagedBean
 public class imageClass {
     
     public List<String> images;
