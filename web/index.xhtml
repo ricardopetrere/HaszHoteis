@@ -33,7 +33,7 @@
 
 
             <p:imageSwitch effect="fade">
-                <ui:repeat   value="#{org.primefaces.examples.view/imageClass.images}" var="ImagemNome">
+                <ui:repeat   value="#{imageClass.images}" var="ImagemNome">
                     <p:graphicImage value="/images/#{ImagemNome}" />
                 </ui:repeat>
             </p:imageSwitch>
