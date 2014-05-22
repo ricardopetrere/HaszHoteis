@@ -9,27 +9,18 @@
     </h:head>
     <h:body>
         <h:form >
-
-            <p:panel header="Login">
+            <p:panel header="Login" style="width: 350px">
                 <h:panelGrid columns="2" cellpadding="5">
 
-                    <h:outputText value="CPF" />
-                    <p:inputMask value="#{maskController.phone}" mask="999-999-999-99"/>
+                    <h:outputText value="CPF:" />
+                    <p:inputMask value="#{cliente.cpf}" mask="999-999-999-99"/>
 
-                    <h:outputText value="Password Mode: " />
-                    <p:keyboard value="#{keyboardBean.value9}"
+                    <h:outputText value="Senha: " />
+                    <p:keyboard value=""
                                 password="true"/>    
-                    <!-- Alterar-->                   
-                    
                 </h:panelGrid>
             </p:panel>
-
-
-
-
         </h:form>
-
-
         <!--     <style>
                  .alinhamento    {
      align:center;
@@ -38,6 +29,5 @@
              </style>
         --> 
     </h:body>
-
 </html>
 
