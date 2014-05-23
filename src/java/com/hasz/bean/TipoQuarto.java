@@ -26,7 +26,7 @@ public class TipoQuarto implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipoQuarto;
     
-    @Column(length = 80)
+    @Column(length = 100)
     private String descricao;
     
     @OneToMany(mappedBy = "tipoQuarto",fetch = FetchType.LAZY)

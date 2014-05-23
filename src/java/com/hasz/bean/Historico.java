@@ -31,12 +31,6 @@ public class Historico implements Serializable{
     @Cascade(CascadeType.SAVE_UPDATE)
     private Reserva reserva;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idCliente",insertable = true,updatable = true)
-    @Fetch(FetchMode.JOIN)
-    @Cascade(CascadeType.SAVE_UPDATE)
-    private Cliente cliente;
-    
     @Temporal(TemporalType.DATE)
     private Date data;
     
@@ -96,19 +90,5 @@ public class Historico implements Serializable{
      */
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
-    }
-
-    /**
-     * @return the cliente
-     */
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    /**
-     * @param cliente the cliente to set
-     */
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 }

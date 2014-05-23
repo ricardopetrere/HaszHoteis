@@ -26,11 +26,11 @@ public class Estado implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEstado;
     
+    @Column(length = 50)
+    private String nome;
+    
     @Column(length = 2)
     private String sigla;
-    
-    @Column(length = 80)
-    private String nome;
     
     @OneToMany(mappedBy = "estado",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)

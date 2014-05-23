@@ -39,8 +39,8 @@ public class Hotel implements Serializable {
     @Cascade(CascadeType.SAVE_UPDATE)
     private Endereco endereco;
     
-    @Column(length = 80)
-    private String nome;
+    @Column(length = 75)
+    private String nomeFilial;
     
     @Column(name = "estrelas")
     private int estrelas;
@@ -87,15 +87,15 @@ public class Hotel implements Serializable {
     /**
      * @return the HotelNomeOficial
      */
-    public String getNome() {
-        return nome;
+    public String getNomeFilial() {
+        return nomeFilial;
     }
 
     /**
-     * @param nome the HotelNomeOficial to set
+     * @param nomeFilial the HotelNomeOficial to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeFilial(String nomeFilial) {
+        this.nomeFilial = nomeFilial;
     }
 
     /**

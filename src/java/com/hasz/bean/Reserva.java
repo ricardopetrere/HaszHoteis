@@ -64,9 +64,6 @@ public class Reserva implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date dataFim;
     
-    @Column(name = "ValorDiaria")
-    private float ValorDiaria;
-    
     @OneToMany(mappedBy = "reserva",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<Historico> historico = new HashSet<Historico>();
@@ -153,20 +150,6 @@ public class Reserva implements Serializable{
      */
     public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
-    }
-
-    /**
-     * @return the ReservaValorDiaria
-     */
-    public float getValorDiaria() {
-        return ValorDiaria;
-    }
-
-    /**
-     * @param ValorDiaria the ReservaValorDiaria to set
-     */
-    public void setValorDiaria(float ValorDiaria) {
-        this.ValorDiaria = ValorDiaria;
     }
 
     /**

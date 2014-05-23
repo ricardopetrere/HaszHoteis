@@ -26,7 +26,7 @@ public class Servico implements Serializable{
     @Column(name = "idServico")
     private int idServico;
     
-    @Column(length = 80)
+    @Column(length = 100)
     private String descricao;
     
     @OneToMany(mappedBy = "servico",fetch = FetchType.LAZY)

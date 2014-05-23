@@ -27,14 +27,14 @@ public class Empresa implements Serializable{
     @Column(name = "idEmpresa")
     private int idEmpresa;
     
-    @Column(length = 80)
-    private String nome;
-    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idEndereco",insertable = true,updatable = true)
     @Fetch(FetchMode.JOIN)
     @Cascade(CascadeType.SAVE_UPDATE)
     private Endereco endereco;
+    
+    @Column(length = 80)
+    private String nome;
     
     @OneToMany(mappedBy = "empresa",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)

@@ -32,14 +32,14 @@ public class Quarto implements Serializable{
     @Cascade(CascadeType.SAVE_UPDATE)
     private Hotel hotel;
     
-    @Column(name = "numero")
-    private int numero;
-    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idTipoQuarto",insertable = true,updatable = true)
     @Fetch(FetchMode.JOIN)
     @Cascade(CascadeType.SAVE_UPDATE)
     private TipoQuarto tipoQuarto;
+    
+    @Column(name = "numero")
+    private int numero;
     
     @OneToMany(mappedBy = "quarto",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)

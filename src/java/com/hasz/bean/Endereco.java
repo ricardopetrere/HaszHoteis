@@ -40,7 +40,7 @@ public class Endereco implements Serializable{
     @Column(length = 80)
     private String bairro;
     
-    @Column(length = 120)
+    @Column(length = 80)
     private String complemento;
     
     @Column(length = 9)
