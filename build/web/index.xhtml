@@ -8,48 +8,57 @@
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
         <title>Hasz Hotéis</title>
     </h:head>
-    <h:body>
+    <h:body styleClass="background">
         <h:form>
-            <p:layout style="width:700px;height:280px;" id="layout">
-                <p:layoutUnit position="west" resizable="false" size="350" minSize="350" maxSize="350">
-                    <p:menu styleClass="padrao">
-                        <p:submenu label="Clientes" >
-                            <p:menuitem value="Login"  url="private/login.xhtml" />                    
-                            <p:menuitem value="Promoções"  />                    
-                        </p:submenu>
-                        <p:submenu label="Visitantes">
-                            <p:menuitem value="Cadastro" url="cliente/cadastroCliente.xhtml"/>
-                        </p:submenu>              
-                    </p:menu>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-
-                    <p:graphicImage value="/images/sp_1.jpg"/>
-
-                    aqui
-                </p:layoutUnit>
-            </p:layout>
-
-
-            <p:imageSwitch effect="fade">
-                <ui:repeat   value="#{org.primefaces.examples.view/imageClass.images}" var="ImagemNome">
-                    <p:graphicImage value="/images/#{ImagemNome}" />
-                </ui:repeat>
-            </p:imageSwitch>
-            <br />
-
-            #{OI}
-            #{ImagemNome}
-            
-            aaa
+            <div style="text-align: center">
+                <h1>Bem Vindo à Hoteis Hasz</h1>
+                <p:menubar>
+                    <p:submenu label="Hotel">
+                        <p:menuitem value="Buscar Produtos" url="produtos/ListaProdutos.xhtml"/>
+                    </p:submenu>
+                    <p:submenu label="Cliente">
+                        <p:menuitem value="Cadastrar-se" url="cliente/cadastroCliente.xhtml"/>
+                        <p:menuitem value="Login/Logout" url="cliente/login.xhtml"/>
+                    </p:submenu>
+                    <p:menuitem value="Administrativo" url="admin/LoginAdmin.xhtml"/>
+                    <f:facet name="options">
+                        <p:commandButton style="background-color: green" actionListener="reserva" value="Faça já sua Reserva"/>
+                    </f:facet>
+                </p:menubar>
+                <p:graphicImage url="images/logo.jpg" width="600px"/><br/>
+                <font style="font-style: italic;font-size: large"> "Você é nosso convidado, não apenas no quarto"</font>
+            </div>
         </h:form>
 
+
+
+
+
+
+
+
+
+        <!--
+        <h:form>
+            <p:menu styleClass="padrao">
+                <p:submenu label="Clientes" >
+                    <p:menuitem value="Login"  url="private/login.xhtml" />                    
+                    <p:menuitem value="Promoções"  />                    
+                </p:submenu>
+                <p:submenu label="Visitantes">
+                    <p:menuitem value="Cadastro" url="cliente/cadastroCliente.xhtml"/>
+                </p:submenu>              
+            </p:menu>
+        </h:form>
+        -->
         <style>
             .padrao{
                 font-size: 18px;
             }
-
+            .background{
+                //background-image: url("images/logo.jpg");
+                background-size: 100% 100%;
+            }
         </style>
     </h:body>
 </html>

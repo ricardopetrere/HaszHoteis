@@ -8,16 +8,17 @@
         <title>Hotéis Hasz - Login</title>
     </h:head>
     <h:body>
-        <h:form >
+        <h:form>
             <p:panel header="Login" style="width: 350px">
                 <h:panelGrid columns="2" cellpadding="5">
 
                     <h:outputText value="CPF:" />
-                    <p:inputMask value="#{cliente.cpf}" mask="999-999-999-99"/>
+                    <p:inputMask validator="util.CpfValidator" value="#{cliente.cpf}" mask="999.999.999-99"/>
 
                     <h:outputText value="Senha: " />
                     <p:keyboard value=""
-                                password="true"/>    
+                                password="true"/>
+                    <h:commandButton title="Entrar" value="submit"></h:commandButton>
                 </h:panelGrid>
             </p:panel>
         </h:form>

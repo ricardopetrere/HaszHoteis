@@ -8,6 +8,7 @@ package com.hasz.bean;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -18,6 +19,7 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name = "Hotel")
 public class Hotel implements Serializable {
@@ -39,8 +41,8 @@ public class Hotel implements Serializable {
     @Cascade(CascadeType.SAVE_UPDATE)
     private Endereco endereco;
     
-    @Column(length = 80)
-    private String nome;
+    @Column(length = 75)
+    private String nomeFilial;
     
     @Column(name = "estrelas")
     private int estrelas;
@@ -87,15 +89,15 @@ public class Hotel implements Serializable {
     /**
      * @return the HotelNomeOficial
      */
-    public String getNome() {
-        return nome;
+    public String getNomeFilial() {
+        return nomeFilial;
     }
 
     /**
-     * @param nome the HotelNomeOficial to set
+     * @param nomeFilial the HotelNomeOficial to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeFilial(String nomeFilial) {
+        this.nomeFilial = nomeFilial;
     }
 
     /**

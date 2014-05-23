@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -19,6 +20,7 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name = "Cliente")
 public class Cliente implements Serializable{
@@ -53,7 +55,9 @@ public class Cliente implements Serializable{
     @OneToMany(mappedBy = "cliente",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<Historico> historico = new HashSet<Historico>();
-
+    
+    @Column(length = 14)
+    private String cpf;
     /**
      * @return the idCliente
      */
@@ -178,5 +182,19 @@ public class Cliente implements Serializable{
      */
     public void setHistorico(Set<Historico> historico) {
         this.historico = historico;
+    }
+
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

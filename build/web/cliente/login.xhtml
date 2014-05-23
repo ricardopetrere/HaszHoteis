@@ -8,28 +8,20 @@
         <title>Hotéis Hasz - Login</title>
     </h:head>
     <h:body>
-        <h:form >
-
-            <p:panel header="Login">
+        <h:form>
+            <p:panel header="Login" style="width: 350px">
                 <h:panelGrid columns="2" cellpadding="5">
 
-                    <h:outputText value="CPF" />
-                    <p:inputMask value="#{maskController.phone}" mask="999-999-999-99"/>
+                    <h:outputText value="CPF:" />
+                    <p:inputMask validator="util.CpfValidator" value="#{cliente.cpf}" mask="999.999.999-99"/>
 
-                    <h:outputText value="Password Mode: " />
-                    <p:keyboard value="#{keyboardBean.value9}"
-                                password="true"/>    
-                    <!-- Alterar-->                   
-                    
+                    <h:outputText value="Senha: " />
+                    <p:keyboard value=""
+                                password="true"/>
+                    <h:commandButton title="Entrar" value="submit"></h:commandButton>
                 </h:panelGrid>
             </p:panel>
-
-
-
-
         </h:form>
-
-
         <!--     <style>
                  .alinhamento    {
      align:center;
@@ -38,6 +30,5 @@
              </style>
         --> 
     </h:body>
-
 </html>
 

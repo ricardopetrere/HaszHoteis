@@ -9,6 +9,7 @@ package com.hasz.bean;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -18,15 +19,17 @@ import org.hibernate.annotations.CascadeType;
 /**
  *
  * @author Admin
- */@Entity
- @Table(name = "Servico")
+ */
+@ManagedBean
+@Entity
+@Table(name = "Servico")
 public class Servico implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idServico")
     private int idServico;
     
-    @Column(length = 80)
+    @Column(length = 100)
     private String descricao;
     
     @OneToMany(mappedBy = "servico",fetch = FetchType.LAZY)

@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -20,6 +21,7 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name = "Reserva")
 public class Reserva implements Serializable{
@@ -63,9 +65,6 @@ public class Reserva implements Serializable{
     @Column(name = "dataFim")
     @Temporal(TemporalType.DATE)
     private Date dataFim;
-    
-    @Column(name = "ValorDiaria")
-    private float ValorDiaria;
     
     @OneToMany(mappedBy = "reserva",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
@@ -153,20 +152,6 @@ public class Reserva implements Serializable{
      */
     public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
-    }
-
-    /**
-     * @return the ReservaValorDiaria
-     */
-    public float getValorDiaria() {
-        return ValorDiaria;
-    }
-
-    /**
-     * @param ValorDiaria the ReservaValorDiaria to set
-     */
-    public void setValorDiaria(float ValorDiaria) {
-        this.ValorDiaria = ValorDiaria;
     }
 
     /**

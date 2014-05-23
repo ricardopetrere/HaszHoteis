@@ -9,6 +9,7 @@ package com.hasz.bean;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -19,6 +20,7 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name = "TipoQuarto")
 public class TipoQuarto implements Serializable{
@@ -26,7 +28,7 @@ public class TipoQuarto implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipoQuarto;
     
-    @Column(length = 80)
+    @Column(length = 100)
     private String descricao;
     
     @OneToMany(mappedBy = "tipoQuarto",fetch = FetchType.LAZY)

@@ -9,6 +9,7 @@ package com.hasz.bean;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -19,12 +20,13 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name = "StatusReserva")
 public class StatusReserva implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idStatusReserva;
     
     @Column(length = 80)
     private String descricao;
@@ -34,17 +36,17 @@ public class StatusReserva implements Serializable{
     private Set<Reserva> reserva = new HashSet<Reserva>();
     
     /**
-     * @return the idStatusReserva
+     * @return the idStatusReservaStatusReserva
      */
-    public int getId() {
-        return id;
+    public int getIdStatusReserva() {
+        return idStatusReserva;
     }
 
     /**
-     * @param id the idStatusReserva to set
+     * @param idStatusReserva the idStatusReservaStatusReserva to set
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setIdStatusReserva(int idStatusReserva) {
+        this.idStatusReserva = idStatusReserva;
     }
 
     /**

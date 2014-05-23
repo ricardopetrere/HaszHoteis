@@ -9,6 +9,7 @@ package com.hasz.bean;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -19,6 +20,7 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name = "Quarto")
 public class Quarto implements Serializable{
@@ -32,14 +34,14 @@ public class Quarto implements Serializable{
     @Cascade(CascadeType.SAVE_UPDATE)
     private Hotel hotel;
     
-    @Column(name = "numero")
-    private int numero;
-    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idTipoQuarto",insertable = true,updatable = true)
     @Fetch(FetchMode.JOIN)
     @Cascade(CascadeType.SAVE_UPDATE)
     private TipoQuarto tipoQuarto;
+    
+    @Column(name = "numero")
+    private int numero;
     
     @OneToMany(mappedBy = "quarto",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)

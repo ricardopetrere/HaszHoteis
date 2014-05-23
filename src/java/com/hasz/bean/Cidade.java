@@ -9,6 +9,7 @@ package com.hasz.bean;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -19,6 +20,7 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name="Cidade")
 public class Cidade implements Serializable{
@@ -33,8 +35,8 @@ public class Cidade implements Serializable{
     @Cascade(CascadeType.SAVE_UPDATE)
     private Estado estado;
     
-    @Column(length = 80)
-    private String nome;
+    @Column(length = 150)
+    private String descricao;
     
     @OneToMany(mappedBy = "cidade",fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
@@ -57,15 +59,15 @@ public class Cidade implements Serializable{
     /**
      * @return the municipio
      */
-    public String getNome() {
-        return nome;
+    public String getDescricao() {
+        return descricao;
     }
 
     /**
-     * @param nome the municipio to set
+     * @param descricao the municipio to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**

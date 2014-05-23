@@ -8,6 +8,7 @@ package com.hasz.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -18,6 +19,7 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
+@ManagedBean
 @Entity
 @Table(name = "AlteracaoPrecoServico")
 public class AlteracaoPrecoServico implements Serializable{
