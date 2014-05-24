@@ -22,33 +22,26 @@ import org.hibernate.annotations.CascadeType;
  * @author Admin
  */
 @Entity
-@Table(name = "Cliente")
-public class Cliente implements Serializable {
+@Table(name = "ClienteFisico")
+public class ClienteFisico extends Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCliente")
     private int idCliente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEndereco", insertable = true, updatable = true)
-    @Fetch(FetchMode.JOIN)
-    @Cascade(CascadeType.SAVE_UPDATE)
-    private Endereco endereco;
+    @Size(min = 1, max = 100)
+    @Column(length = 100)
+    private String nome;
 
     @Temporal(TemporalType.DATE)
-    private Date dataCadastro;
+    @Past
+    private Date dataNascimento;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-    @Cascade(CascadeType.SAVE_UPDATE)
-    private Set<Reserva> reserva = new HashSet<Reserva>();
+    private char sexo;
 
     @Column(length = 14)
     private String cpf;
-
-    @Size(min = 6, max = 20)
-    @Column(length = 25)
-    private String senha;
 
     /**
      * @return the idCliente
@@ -65,45 +58,45 @@ public class Cliente implements Serializable {
     }
 
     /**
-     * @return the endereco
+     * @return the nome
      */
-    public Endereco getEndereco() {
-        return endereco;
+    public String getNome() {
+        return nome;
     }
 
     /**
-     * @param endereco the endereco to set
+     * @param nome the nome to set
      */
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
-     * @return the dataCadastro
+     * @return the dataNascimento
      */
-    public Date getDataCadastro() {
-        return dataCadastro;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
     /**
-     * @param dataCadastro the dataCadastro to set
+     * @param dataNascimento the dataNascimento to set
      */
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     /**
-     * @return the reserva
+     * @return the sexo
      */
-    public Set<Reserva> getReserva() {
-        return reserva;
+    public char getSexo() {
+        return sexo;
     }
 
     /**
-     * @param reserva the reserva to set
+     * @param sexo the sexo to set
      */
-    public void setReserva(Set<Reserva> reserva) {
-        this.reserva = reserva;
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
     }
 
     /**
@@ -118,17 +111,6 @@ public class Cliente implements Serializable {
      */
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    /**
-     * @param senha the senha to set
-     */
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
 }

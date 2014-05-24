@@ -40,11 +40,11 @@ public class CpfValidator implements Validator {
             FacesMessage msg = new FacesMessage("Falhou a validação de CPF.", "Formato inválido de CPF.");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
-        } else {
+        }/* else {
             FacesMessage msg = new FacesMessage("Sucesso na validação de CPF.", "CPF válido.");
             msg.setSeverity(FacesMessage.SEVERITY_INFO);
             throw new ValidatorException(msg);
-        }
+        }*/
     }
 
     static public boolean CPF(String strCpf) {

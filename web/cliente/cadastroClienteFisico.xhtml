@@ -1,0 +1,68 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+        <title>Hotéis Hasz - Cadastro de Cliente</title>                
+    </h:head>
+    <h:body>
+
+
+        <h:form>
+            <p:panel header="Cadastro de Cliente" style="width: 700px">
+                <h:panelGrid columns="4" cellpadding="5">
+
+                    <h:outputLabel value="Nome completo" />
+                    <p:inputText id="name" value="#{clienteBean.clientefisico.nome}" label="Nome"/>
+                    <p:message for="name" />
+                    <h:outputText value="#{beanValidationView.name}" />       
+
+                    <h:outputLabel value="Sexo" />
+                    <p:selectOneRadio id="cbSexo" value="#{clienteBean.clientefisico.sexo}" >
+                        <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                        <f:selectItem itemLabel="Feminino" itemValue="F" />                        
+                    </p:selectOneRadio>
+                    <p:message for="cbSexo" />
+                    <h:outputText value="#{beanValidationView.name}" /> 
+
+                    <h:outputLabel for="psstDate" value="Data de Nascimento" />                                                    
+                    <p:inputMask id = "txtDataNascimento" mask="99/99/9999" value="#{clienteBean.clientefisico.dataNascimento}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </p:inputMask>
+                    <p:message for="txtDataNascimento" />
+                    <h:outputText value =" #{beanValidationView.pastDate}" />
+
+
+                    <h:outputText value="CPF"/>
+                    <p:inputMask id="txtCpf" mask="999.999.999-99" validator="util.CpfValidator" value="#{clienteBean.clientefisico.cpf}"/>
+                    <p:message for="txtCpf" />
+                    <h:outputText value="#{beanValidationView.name}" />       
+
+                    <h:outputLabel value="Senha: " />
+                    <p:password id="txtSenha" value="#{clienteBean.clientefisico.senha}" feedback="true"
+                                promptLabel="Verificação de segurança" weakLabel="Senha fraca"
+                                goodLabel="Senha média" strongLabel="Senha forte" />
+                    <p:message for="txtSenha" />
+                    <h:outputText value="#{beanValidationView.name}" />                         
+
+                    <h:outputLabel value="Repita a senha: " />
+                    <p:password id="txtRepitaSenha" value="#{clienteBean.clientefisico.senha}" feedback="true"
+                                promptLabel="Verificação de segurança" weakLabel="Senha fraca"
+                                goodLabel="Senha média" strongLabel="Senha forte" />
+                    <p:message for="txtRepitaSenha" />
+                    <h:outputText value="#{beanValidationView.name}" /> 
+
+
+                </h:panelGrid>
+
+                <p:commandButton value="Salvar"  ajax="false" icon="ui-icon-check" />
+                <p:button value="Cancelar"  icon="ui-icon-cancel"  />
+                
+            </p:panel>
+        </h:form>
+
+
+    </h:body>
+</html>

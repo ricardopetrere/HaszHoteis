@@ -15,7 +15,10 @@
                     <p:menuitem value="Buscar Produtos" url="produtos/ListaProdutos.xhtml"/>
                 </p:submenu>
                 <p:submenu label="Cliente">
-                    <p:menuitem value="Cadastrar-se" url="cliente/cadastroCliente.xhtml"/>
+                    <p:submenu label="Cadastro">
+                        <p:menuitem value="Cliente Físico" url="cliente/cadastroClienteFisico.xhtml"/>
+                        <p:menuitem value="Cliente Jurídico" url="cliente/cadastroClienteJuridico.xhtml"/>
+                    </p:submenu>
                     <p:menuitem value="Login/Logout" url="cliente/login.xhtml"/>
                 </p:submenu>
                 <p:menuitem value="Administrativo" url="admin/LoginAdmin.xhtml"/>
@@ -23,7 +26,9 @@
                     <p:commandButton style="background-color: green" actionListener="reserva" value="Faça já sua Reserva"/>
                 </f:facet>
             </p:menubar>
-            <ui:insert name="menu"></ui:insert>
+            <ui:insert name="menu">
+
+            </ui:insert>
         </h:form>
     </h:body>
 </html>

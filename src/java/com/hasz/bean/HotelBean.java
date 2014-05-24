@@ -5,8 +5,10 @@
  */
 package com.hasz.bean;
 import com.hasz.model.Hotel;
+import java.util.ArrayList;
 
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -23,6 +25,18 @@ public class HotelBean {
      */
     public List<Hotel> listaHoteis()
     {
-        return null;
+        return hoteis;
     }
+    
+    private Hotel hotel;
+
+    private List<Hotel> hoteis;
+
+    @PostConstruct
+    public void init() {
+        hotel = new Hotel();
+
+        hoteis = new ArrayList<Hotel>();
+    }
+    
 }
