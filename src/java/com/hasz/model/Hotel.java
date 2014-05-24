@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.hasz.bean;
+package com.hasz.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -19,7 +19,6 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
-@ManagedBean
 @Entity
 @Table(name = "Hotel")
 public class Hotel implements Serializable {

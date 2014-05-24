@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.hasz.bean.dao;
-import com.hasz.bean.Hotel;
+import com.hasz.model.Hotel;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;

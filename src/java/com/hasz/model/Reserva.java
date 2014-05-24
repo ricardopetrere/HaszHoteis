@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.hasz.bean;
+package com.hasz.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,7 +21,6 @@ import org.hibernate.annotations.CascadeType;
  *
  * @author Admin
  */
-@ManagedBean
 @Entity
 @Table(name = "Reserva")
 public class Reserva implements Serializable{

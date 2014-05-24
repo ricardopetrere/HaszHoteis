@@ -5,7 +5,7 @@
  */
 
 package com.hasz.bean.dao;
-import com.hasz.bean.Cliente;
+import com.hasz.model.Cliente;
 import javax.faces.bean.ManagedBean;
 
 /**

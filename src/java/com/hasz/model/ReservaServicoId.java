@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.hasz.bean;
+package com.hasz.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
