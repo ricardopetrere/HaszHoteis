@@ -9,35 +9,15 @@
         <title>Hasz Hotéis</title>
     </h:head>
     <h:body styleClass="background">
-        <h:form>
-            <div style="text-align: center">
-                <h1>Bem Vindo à Hoteis Hasz</h1>
-                <p:menubar>
-                    <p:submenu label="Hotel">
-                        <p:menuitem value="Buscar Produtos" url="produtos/ListaProdutos.xhtml"/>
-                    </p:submenu>
-                    <p:submenu label="Cliente">
-                        <p:menuitem value="Cadastrar-se" url="cliente/cadastroCliente.xhtml"/>
-                        <p:menuitem value="Login/Logout" url="cliente/login.xhtml"/>
-                    </p:submenu>
-                    <p:menuitem value="Administrativo" url="admin/LoginAdmin.xhtml"/>
-                    <f:facet name="options">
-                        <p:commandButton style="background-color: green" actionListener="reserva" value="Faça já sua Reserva"/>
-                    </f:facet>
-                </p:menubar>
-                <p:graphicImage url="images/logo.jpg" width="600px"/><br/>
-                <font style="font-style: italic;font-size: larger"> "Você é nosso convidado, não apenas no quarto"</font>
-            </div>
-        </h:form>
-
-
-
-
-
-
-
-
-
+        <div style="text-align: center">
+            <h1>Bem Vindo à Hoteis Hasz</h1>
+            <ui:composition template="/template.xhtml">
+                <ui:define name="menu">
+                    <p:graphicImage url="images/logo.jpg" width="600px"/><br/>
+                    <font style="font-style: italic;font-size: x-large"> "Você é nosso convidado, não apenas no quarto"</font>
+                </ui:define>
+            </ui:composition>
+        </div>
         <!--
         <h:form>
             <p:menu styleClass="padrao">

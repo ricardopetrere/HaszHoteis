@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 
-package com.hasz.bean.dao;
+package com.hasz.bean;
 import com.hasz.model.Cliente;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Ricardo
  */
 @ManagedBean
-public class ClienteDAO {
+@SessionScoped
+public class ClienteBean {
     /**
      * 
      * @param login

@@ -3,32 +3,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
         <title>Hotéis Hasz - Cadastro de Reserva</title>
     </h:head>
     <h:body>
-        <p:menubar>
-            <p:submenu label="Hotel">
-                <p:menuitem value="Buscar Produtos" url="produtos/ListaProdutos.xhtml"/>
-            </p:submenu>
-            <p:submenu label="Cliente">
-                <p:menuitem value="Cadastrar-se" url="cliente/cadastroCliente.xhtml"/>
-                <p:menuitem value="Login/Logout" url="cliente/login.xhtml"/>
-            </p:submenu>
-            <p:menuitem value="Administrativo" url="admin/LoginAdmin.xhtml"/>
-            <f:facet name="options">
-                <p:commandButton actionListener="reserva" value="Cancelar Reserva"/>
-            </f:facet>
-        </p:menubar>
-        <h:form>
-            <h:outputText value="Hotel:"/>
-            <p:selectOneMenu>
-                <f:selectItem itemLabel="Selecione um hotel" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{hotelDAO.listaHoteis()}"/>
-            </p:selectOneMenu>
-        </h:form>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="menu">
+                <h:form>
+                    <h:outputText value="Hotel:"/>
+                    <p:selectOneMenu>
+                        <f:selectItem itemLabel="Selecione um hotel" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{hotelBean.listaHoteis()}"/>
+                    </p:selectOneMenu>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

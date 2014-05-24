@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.hasz.bean.dao;
+package com.hasz.bean;
 import com.hasz.model.Hotel;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Ricardo
  */
 @ManagedBean
-public class HotelDAO {
+@SessionScoped
+public class HotelBean {
     /**
      * 
      * @return 

@@ -19,7 +19,7 @@
                         <h:outputText value="Senha: " />
                         <p:keyboard id="txtsenha" value=""
                                     password="true"/>
-                        <h:commandButton title="Entrar" value="Entrar" onclick="#{clienteDAO.validaLogin(txtlogin, txtsenha)}"></h:commandButton>
+                        <h:commandButton title="Entrar" value="Entrar" onclick="#{clienteBean.validaLogin(txtlogin, txtsenha)}"></h:commandButton>
                     </h:panelGrid>
                 </p:panel>
             </h:form>
