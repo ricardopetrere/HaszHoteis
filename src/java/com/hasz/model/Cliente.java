@@ -42,8 +42,6 @@ public class Cliente implements Serializable {
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<Reserva> reserva = new HashSet<Reserva>();
 
-    @Column(length = 14)
-    private String cpf;
 
     @Size(min = 6, max = 20)
     @Column(length = 25)
@@ -103,20 +101,6 @@ public class Cliente implements Serializable {
      */
     public void setReserva(Set<Reserva> reserva) {
         this.reserva = reserva;
-    }
-
-    /**
-     * @return the cpf
-     */
-    public String getCpf() {
-        return cpf;
-    }
-
-    /**
-     * @param cpf the cpf to set
-     */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getSenha() {

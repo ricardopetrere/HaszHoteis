@@ -7,8 +7,6 @@ package com.hasz.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -46,6 +44,7 @@ public class ClienteFisico extends Cliente implements Serializable {
     /**
      * @return the idCliente
      */
+    @Override
     public int getIdCliente() {
         return idCliente;
     }
@@ -53,6 +52,7 @@ public class ClienteFisico extends Cliente implements Serializable {
     /**
      * @param idCliente the idCliente to set
      */
+    @Override
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
@@ -112,5 +112,4 @@ public class ClienteFisico extends Cliente implements Serializable {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
 }

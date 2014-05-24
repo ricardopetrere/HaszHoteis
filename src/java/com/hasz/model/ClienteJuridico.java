@@ -6,16 +6,12 @@
 package com.hasz.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -37,6 +33,7 @@ public class ClienteJuridico extends Cliente implements Serializable {
     /**
      * @return the idCliente
      */
+    @Override
     public int getIdCliente() {
         return idCliente;
     }
@@ -44,6 +41,7 @@ public class ClienteJuridico extends Cliente implements Serializable {
     /**
      * @param idCliente the idCliente to set
      */
+    @Override
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
@@ -75,5 +73,4 @@ public class ClienteJuridico extends Cliente implements Serializable {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-
 }
