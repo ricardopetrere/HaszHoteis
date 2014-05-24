@@ -36,29 +36,12 @@ public class Cliente implements Serializable {
     @Cascade(CascadeType.SAVE_UPDATE)
     private Endereco endereco;
 
-    @Size(min = 1, max = 100)
-    @Column(length = 100)
-    private String nome;
-
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
-
-    @Temporal(TemporalType.DATE)
-    @Past
-    private Date dataNascimento;
-
-    private char sexo;
 
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<Reserva> reserva = new HashSet<Reserva>();
-
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-    @Cascade(CascadeType.SAVE_UPDATE)
-    private Set<Historico> historico = new HashSet<Historico>();
-
-    @Column(length = 14)
-    private String cpf;
 
     @Size(min = 6, max = 20)
     @Column(length = 25)
@@ -76,20 +59,6 @@ public class Cliente implements Serializable {
      */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
-    }
-
-    /**
-     * @return the nome
-     */
-    public String getNome() {
-        return nome;
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     /**
@@ -121,34 +90,6 @@ public class Cliente implements Serializable {
     }
 
     /**
-     * @return the dataNascimento
-     */
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    /**
-     * @param dataNascimento the dataNascimento to set
-     */
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    /**
-     * @return the sexo
-     */
-    public char getSexo() {
-        return sexo;
-    }
-
-    /**
-     * @param sexo the sexo to set
-     */
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
-
-    /**
      * @return the reserva
      */
     public Set<Reserva> getReserva() {
@@ -160,34 +101,6 @@ public class Cliente implements Serializable {
      */
     public void setReserva(Set<Reserva> reserva) {
         this.reserva = reserva;
-    }
-
-    /**
-     * @return the historico
-     */
-    public Set<Historico> getHistorico() {
-        return historico;
-    }
-
-    /**
-     * @param historico the historico to set
-     */
-    public void setHistorico(Set<Historico> historico) {
-        this.historico = historico;
-    }
-
-    /**
-     * @return the cpf
-     */
-    public String getCpf() {
-        return cpf;
-    }
-
-    /**
-     * @param cpf the cpf to set
-     */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     /**
@@ -203,4 +116,5 @@ public class Cliente implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 }
