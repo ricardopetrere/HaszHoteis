@@ -53,10 +53,6 @@ public class Cliente implements Serializable {
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<Reserva> reserva = new HashSet<Reserva>();
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-    @Cascade(CascadeType.SAVE_UPDATE)
-    private Set<Historico> historico = new HashSet<Historico>();
-
     @Column(length = 14)
     private String cpf;
 
@@ -160,20 +156,6 @@ public class Cliente implements Serializable {
      */
     public void setReserva(Set<Reserva> reserva) {
         this.reserva = reserva;
-    }
-
-    /**
-     * @return the historico
-     */
-    public Set<Historico> getHistorico() {
-        return historico;
-    }
-
-    /**
-     * @param historico the historico to set
-     */
-    public void setHistorico(Set<Historico> historico) {
-        this.historico = historico;
     }
 
     /**
