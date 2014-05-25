@@ -37,6 +37,9 @@ public class HotelBean {
         hotel = new Hotel();
 
         hoteis = new ArrayList<Hotel>();
+        hoteis.add(new Hotel());
+        hoteis.add(new Hotel());
+        hoteis.add(new Hotel());
     }
     
 }

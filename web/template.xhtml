@@ -11,19 +11,20 @@
     <h:body>
         <h:form>
             <p:menubar>
+                <p:menuitem value="Home" url="/index.xhtml"/>
                 <p:submenu label="Hotel">
-                    <p:menuitem value="Buscar Produtos" url="produtos/ListaProdutos.xhtml"/>
+                    <p:menuitem value="Buscar Produtos" url="/produtos/ListaProdutos.xhtml"/>
                 </p:submenu>
                 <p:submenu label="Cliente">
                     <p:submenu label="Cadastro">
-                        <p:menuitem value="Cliente Físico" url="cliente/cadastroClienteFisico.xhtml"/>
-                        <p:menuitem value="Cliente Jurídico" url="cliente/cadastroClienteJuridico.xhtml"/>
+                        <p:menuitem value="Cliente Físico" url="/cliente/cadastroClienteFisico.xhtml"/>
+                        <p:menuitem value="Cliente Jurídico" url="/cliente/cadastroClienteJuridico.xhtml"/>
                     </p:submenu>
-                    <p:menuitem value="Login/Logout" url="cliente/login.xhtml"/>
+                    <p:menuitem value="Login/Logout" url="/cliente/login.xhtml"/>
                 </p:submenu>
-                <p:menuitem value="Administrativo" url="admin/LoginAdmin.xhtml"/>
+                <p:menuitem value="Administrativo" url="/admin/LoginAdmin.xhtml"/>
                 <f:facet name="options">
-                    <p:commandButton style="background-color: green" actionListener="reserva" value="Faça já sua Reserva"/>
+                    <p:button style="background-color: green"  href="/reserva/cadastroReserva.xhtml" value="Faça já sua Reserva"/>
                 </f:facet>
             </p:menubar>
             <ui:insert name="menu">

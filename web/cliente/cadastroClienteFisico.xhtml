@@ -32,7 +32,7 @@
                         <f:convertDateTime pattern="dd/MM/yyyy" />
                     </p:inputMask>
                     <p:message for="txtDataNascimento" />
-                    <h:outputText value =" #{beanValidationView.pastDate}" />
+                    <h:outputText value ="#{beanValidationView.pastDate}"/>
 
 
                     <h:outputText value="CPF"/>
@@ -58,7 +58,7 @@
                 </h:panelGrid>
 
                 <p:commandButton value="Salvar"  ajax="false" icon="ui-icon-check" />
-                <p:button value="Cancelar"  icon="ui-icon-cancel"  />
+                <p:button value="Cancelar"  icon="ui-icon-cancel" href="/index.xhtml"/>
                 
             </p:panel>
         </h:form>

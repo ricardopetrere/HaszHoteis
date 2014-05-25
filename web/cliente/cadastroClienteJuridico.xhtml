@@ -6,9 +6,6 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-      
-        
-        
          <h:form>
             <p:panel header="Cadastro de Juridico" style="width: 700px">
                 <h:panelGrid columns="4" cellpadding="5">
@@ -37,20 +34,10 @@
                                 goodLabel="Senha média" strongLabel="Senha forte" />
                     <p:message for="txtRepitaSenha" />
                     <h:outputText value="#{beanValidationView.name}" /> 
-
-
                 </h:panelGrid>
-
                 <p:commandButton value="Salvar"  ajax="false" icon="ui-icon-check" />
-                <p:button value="Cancelar"  icon="ui-icon-cancel"  />
-                
+                <p:button value="Cancelar"  icon="ui-icon-cancel"  href="/index.xhtml"/>
             </p:panel>
         </h:form>
-        
-        
-        
-        
-        
     </h:body>
 </html>
-

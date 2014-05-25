@@ -24,14 +24,11 @@ public class HibernateUtil {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             configuration = new Configuration().configure();
             
-            configuration.setProperty("hibernate.connection.url", "jdbc:sqlserver://192.168.1.105:1433;databaseName=Hasz2");
-            configuration.setProperty("hibernate.connection.username", "sa");
-            configuration.setProperty("hibernate.connection.password", "123");
-            configuration.setProperty("hibernate.hbm2ddl.auto","update");//create-drop ou update
-            
             configuration.addAnnotatedClass(AlteracaoPrecoServico.class);
             configuration.addAnnotatedClass(Cidade.class);
             configuration.addAnnotatedClass(Cliente.class);
+            configuration.addAnnotatedClass(ClienteFisico.class);
+            configuration.addAnnotatedClass(ClienteJuridico.class);
             configuration.addAnnotatedClass(Empresa.class);
             configuration.addAnnotatedClass(Endereco.class);
             configuration.addAnnotatedClass(Estado.class);

@@ -22,6 +22,7 @@ import org.hibernate.annotations.CascadeType;
  */
 @Entity
 @Table(name = "Cliente")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Cliente implements Serializable {
 
     @Id

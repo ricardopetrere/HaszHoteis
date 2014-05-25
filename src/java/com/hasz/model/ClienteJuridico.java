@@ -11,17 +11,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "ClienteFisico")
-public class ClienteJuridico extends Cliente implements Serializable {
+@Table(name = "ClienteJuridico")
+@PrimaryKeyJoinColumn(name = "idCliente")
+public class ClienteJuridico extends Cliente{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCliente")
-    private int idCliente;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "idCliente")
+//    private int idCliente;
 
     @Size(min = 1, max = 100)
     @Column(length = 100)
@@ -30,21 +32,21 @@ public class ClienteJuridico extends Cliente implements Serializable {
     @Column(length = 18)
     private String cnpj;
 
-    /**
-     * @return the idCliente
-     */
-    @Override
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    /**
-     * @param idCliente the idCliente to set
-     */
-    @Override
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
+//    /**
+//     * @return the idCliente
+//     */
+//    @Override
+//    public int getIdCliente() {
+//        return idCliente;
+//    }
+//
+//    /**
+//     * @param idCliente the idCliente to set
+//     */
+//    @Override
+//    public void setIdCliente(int idCliente) {
+//        this.idCliente = idCliente;
+//    }
 
     /**
      * @return the razaosocial

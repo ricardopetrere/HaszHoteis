@@ -10,10 +10,6 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -21,12 +17,13 @@ import org.hibernate.annotations.CascadeType;
  */
 @Entity
 @Table(name = "ClienteFisico")
-public class ClienteFisico extends Cliente implements Serializable {
+@PrimaryKeyJoinColumn(name = "idCliente")
+public class ClienteFisico extends Cliente{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCliente")
-    private int idCliente;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "idCliente")
+//    private int idCliente;
 
     @Size(min = 1, max = 100)
     @Column(length = 100)
@@ -41,21 +38,21 @@ public class ClienteFisico extends Cliente implements Serializable {
     @Column(length = 14)
     private String cpf;
 
-    /**
-     * @return the idCliente
-     */
-    @Override
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    /**
-     * @param idCliente the idCliente to set
-     */
-    @Override
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
+//    /**
+//     * @return the idCliente
+//     */
+//    @Override
+//    public int getIdCliente() {
+//        return idCliente;
+//    }
+//
+//    /**
+//     * @param idCliente the idCliente to set
+//     */
+//    @Override
+//    public void setIdCliente(int idCliente) {
+//        this.idCliente = idCliente;
+//    }
 
     /**
      * @return the nome
