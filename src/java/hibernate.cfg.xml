@@ -12,7 +12,7 @@
     <property name="hibernate.connection.url">jdbc:sqlserver://192.168.1.105:1433;DatabaseName=Hasz2</property>
     <property name="hibernate.connection.username">sa</property>
     <property name="hibernate.connection.password">123</property>
-    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
 
     <property name="hibernate.c3p0.max_size">10</property>
     <property name="hibernate.c3p0.min_size">2</property>

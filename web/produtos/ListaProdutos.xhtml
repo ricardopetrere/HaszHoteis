@@ -12,7 +12,11 @@
         <h1>Hoteis disponíveis:</h1>
         <ui:composition template="/template.xhtml">
             <ui:define name="menu">
-                <p:ring value="#{hotelBean.listaHoteis()}"/>
+                <p:ring value="#{hotelBean.listaHoteis()}" var="hotel" style="text-align: center;">
+                        #{hotel.nomeFilial}
+                        <br/>
+                        #{hotel.estrelas} estrelas
+                </p:ring>
             </ui:define>
         </ui:composition>
     </h:body>

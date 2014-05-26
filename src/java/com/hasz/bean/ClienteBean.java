@@ -5,13 +5,16 @@
  */
 package com.hasz.bean;
 
+import com.hasz.model.Cliente;
 import com.hasz.model.ClienteFisico;
 import com.hasz.model.ClienteJuridico;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.validator.ValidatorException;
 
 /**
  *
@@ -20,37 +23,17 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class ClienteBean {
-
-    /**
-     *
-     * @param login
-     * @param senha
-     * @return
-     */
-    public boolean validaLogin(String login, String senha) {
-        //if((login.compareTo(login)==0)&&(senha.compareToIgnoreCase(senha)==0))
-        return false;
-    }
-
     private ClienteFisico clientefisico;
-
     private ClienteJuridico clientejuridico;
-    
-    
     private List<ClienteFisico> clientesfisicos;
     private List<ClienteJuridico> clientesjuridicos;
-
+    private String senha2;
     @PostConstruct
     public void init() {
-        
         clientefisico = new ClienteFisico();
-        
         clientesfisicos = new ArrayList<ClienteFisico>();
-        
         getClientefisico().setSexo('M');
-            
         clientejuridico = new ClienteJuridico();
-        
         clientesjuridicos = new ArrayList<ClienteJuridico>();
     }
 
@@ -109,5 +92,44 @@ public class ClienteBean {
     public void setClientesjuridicos(List<ClienteJuridico> clientesjuridicos) {
         this.clientesjuridicos = clientesjuridicos;
     }
+    
+    /**
+     *
+     * @param login
+     * @param senha
+     * @return
+     */
+    public boolean validaLogin(String login, String senha) {
+        //((login.compareTo(login)==0)&&(senha.compareToIgnoreCase(senha)==0))
+        return false;
+    }
+    
+    public void insertClienteFisico(){
+        ClienteFisico cf = new ClienteFisico();
+        cf=clientefisico;
+        if(!confirmaSenha(cf.getSenha(), senha2))
+            return;
+    }
+    
+    public void insertClienteJuridico(){
+        ClienteJuridico cj = new ClienteJuridico();
+    }
 
+    /**
+     * @return the senha2
+     */
+    public String getSenha2() {
+        return senha2;
+    }
+
+    /**
+     * @param senha2 the senha2 to set
+     */
+    public void setSenha2(String senha2) {
+        this.senha2 = senha2;
+    }
+
+    private boolean confirmaSenha(String senha, String senha2) {
+        return senha.compareTo(senha2)==0;
+    }
 }

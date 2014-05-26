@@ -37,9 +37,24 @@ public class HotelBean {
         hotel = new Hotel();
 
         hoteis = new ArrayList<Hotel>();
-        hoteis.add(new Hotel());
-        hoteis.add(new Hotel());
-        hoteis.add(new Hotel());
+        Hotel h1=new Hotel();
+        h1.setIdHotel(1);
+        h1.setNomeFilial("Hasz 1");
+        h1.setQuantidadeQuartos(3);
+        h1.setEstrelas(4);
+        Hotel h2=new Hotel();
+        h2.setIdHotel(2);
+        h2.setNomeFilial("Hasz 2");
+        h2.setQuantidadeQuartos(3);
+        h2.setEstrelas(4);
+        Hotel h3=new Hotel();
+        h3.setIdHotel(3);
+        h3.setNomeFilial("Hasz 3");
+        h3.setQuantidadeQuartos(3);
+        h3.setEstrelas(4);
+        hoteis.add(h1);
+        hoteis.add(h2);
+        hoteis.add(h3);
     }
     
 }

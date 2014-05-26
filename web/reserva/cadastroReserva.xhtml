@@ -17,7 +17,7 @@
                     <h:outputText value="Hotel:"/>
                     <p:selectOneMenu>
                         <f:selectItem itemLabel="Selecione um hotel" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{hotelBean.listaHoteis()}"/>
+                        <f:selectItems value="#{hotelBean.listaHoteis()}" var="hotel" itemLabel="#{hotel.nomeFilial}" itemValue="#{hotel.nomeFilial}"/>
                     </p:selectOneMenu>
                 </h:form>
             </ui:define>

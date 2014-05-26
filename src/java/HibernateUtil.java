@@ -19,10 +19,20 @@ public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
     private static Configuration configuration;
+    private static String strCon = "jdbc:sqlserver://192.168.150.4:1433;DatabaseName=Hasz";
     static {
         try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            configuration = new Configuration().configure();
+            
+            configuration = new Configuration();
+            
+            //parte a ser sobrescrita por hibernate.cfg.xml
+            configuration.setProperty("hibernate.connection.url", strCon);
+            configuration.setProperty("hibernate.connection.username","sa");
+            configuration.setProperty("hibernate.connection.password","123456");
+            configuration.setProperty("hibernate.hbm2ddl.auto","update");
+            
+            //utilizando hibernate.cfg.xml
+            configuration.configure();
             
             configuration.addAnnotatedClass(AlteracaoPrecoServico.class);
             configuration.addAnnotatedClass(Cidade.class);
