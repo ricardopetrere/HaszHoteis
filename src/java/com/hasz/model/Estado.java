@@ -8,6 +8,7 @@ package com.hasz.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
@@ -23,6 +24,30 @@ import org.hibernate.annotations.CascadeType;
 @Entity
 @Table(name = "Estado")
 public class Estado implements Serializable{
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + this.idEstado;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Estado other = (Estado) obj;
+        if (this.idEstado != other.idEstado) {
+            return false;
+        }
+        return true;
+    }
+
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEstado;

@@ -1,3 +1,5 @@
+package util;
+
 
 import org.hibernate.*;
 
