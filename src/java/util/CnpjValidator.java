@@ -20,7 +20,13 @@ public class CnpjValidator implements Validator {
     public CnpjValidator() {
         pattern = Pattern.compile(CNPJ_PATTERN);
     }
-
+    /**
+     * Para validar o CNPJ, deve-se passá-lo com os pontos e traço
+     * @param context
+     * @param component
+     * @param value
+     * @throws ValidatorException 
+     */
     @Override
     public void validate(FacesContext context, UIComponent component, Object value)
             throws ValidatorException {

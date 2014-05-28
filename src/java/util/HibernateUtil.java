@@ -33,6 +33,12 @@ public class HibernateUtil {
             configuration.setProperty("hibernate.connection.password","123456");
             configuration.setProperty("hibernate.hbm2ddl.auto","update");
             
+            /*
+            resolve o problema de manter as conexões abertas:
+            http://docs.jboss.org/hibernate/core/3.3/reference/en/html/session-configuration.html#configuration-optional
+            */
+            //configuration.setProperty("hibernate.connection.release_mode", "on_close");
+
             //utilizando hibernate.cfg.xml
             configuration.configure();
             

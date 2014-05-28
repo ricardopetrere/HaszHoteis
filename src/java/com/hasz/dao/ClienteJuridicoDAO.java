@@ -5,27 +5,26 @@
  */
 
 package com.hasz.dao;
-import util.HibernateUtil;
-import com.hasz.model.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.hibernate.Query;
+
+import com.hasz.model.ClienteJuridico;
+import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import util.HibernateUtil;
 
 /**
  *
  * @author Ricardo
  */
-public class DAO {
-    /*
-    Bloco padrão para ser utilizado em todas as classes-filho
-    
-    Session sessao = HibernateUtil.getSession();
+public class ClienteJuridicoDAO {
+
+    public static void cadastrarClienteJuridico(ClienteJuridico cj) {
+        Session sessao = HibernateUtil.getSession();
         Transaction t = sessao.beginTransaction();
         try{
-            
+            cj.setDataCadastro(new Date());
+            sessao.saveOrUpdate(cj.getEndereco());
+            sessao.saveOrUpdate(cj);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -34,5 +33,6 @@ public class DAO {
             t.commit();
             sessao.close();
         }
-    */
+    }
+    
 }

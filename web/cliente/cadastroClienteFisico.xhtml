@@ -32,7 +32,7 @@
                     <p:inputMask id = "txtDataNascimento" 
                                  required="true" requiredMessage="Campo obrigatório" mask="99/99/9999" 
                                  value="#{clienteBean.clientefisico.dataNascimento}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" />
                     </p:inputMask>
                     <p:message for="txtDataNascimento" />
 
@@ -60,22 +60,28 @@
                 <p:separator/>
                 <h:panelGrid columns="6" summary="Endereço">
                     <h:outputLabel for="cbEstado" value="Estado:"/>
-                    <h:selectOneMenu id="cbEstado" required="true" requiredMessage="Campo obrigatório" value="#{clienteBean.estado}"
+                    <p:selectOneMenu id="cbEstado" required="true" requiredMessage="Campo obrigatório" 
+                                     filter="true" filterMatchMode="contains"
+                                     value="#{clienteBean.estado}"
                                      converter="estadoConverter">
-                        <f:selectItem itemLabel="Selecione um estado" itemValue=""/>
+                        <f:selectItem itemLabel="Selecione um estado" itemValue=""
+                                      noSelectionOption="true"/>
                         <f:selectItems value="#{clienteBean.estados}" var="estado"
                                        itemLabel="#{estado.nome}" itemValue="#{estado}"/>
                         <p:ajax event="change" listener="#{clienteBean.updateCidades(event)}" 
                                 update="cbCidade"/>
-                    </h:selectOneMenu>
+                    </p:selectOneMenu>
                     <p:message for="cbEstado" />
                     <h:outputLabel for="cbCidade" value="Cidade:"/>
-                    <h:selectOneMenu id="cbCidade" required="true" requiredMessage="Campo obrigatório" value="#{clienteBean.cidade}">
+                    <p:selectOneMenu id="cbCidade" required="true" requiredMessage="Campo obrigatório"
+                                     filter="true" filterMatchMode="contains"
+                                     value="#{clienteBean.cidade}"
+                                     converter="cidadeConverter">
                         <f:selectItem itemLabel="Selecione uma cidade" itemValue=""
                                       noSelectionOption="true"/>
                         <f:selectItems value="#{clienteBean.cidades}" var="cidade"
                                        itemLabel="#{cidade.descricao}" itemValue="#{cidade}"/>
-                    </h:selectOneMenu>
+                    </p:selectOneMenu>
                     <p:message for="cbCidade"/>
                     <h:outputLabel value="Rua" />
                     <p:inputText id="txtRua" required="true" requiredMessage="Campo obrigatório"
@@ -83,7 +89,7 @@
                     <p:message for="txtRua" />
 
                     <h:outputLabel value="Número" />
-                    <p:inputMask mask="?99999" value="#{clienteBean.endereco.numero}" id="txtNum" 
+                    <p:inputMask mask="99999" value="#{clienteBean.endereco.numero}" id="txtNum" 
                                  required="true" requiredMessage="Campo obrigatório" label="Número"/>
                     <p:message for="txtNum" />
 
@@ -104,8 +110,8 @@
                 </h:panelGrid>
                 
                 <p:commandButton value="Salvar"  ajax="false"
-                                 actionListener="#{clienteBean.insertClienteFisico()}"
-                                 icon="ui-icon-check" />
+                                 actionListener="#{clienteBean.insertClienteFisico(event)}"
+                                 icon="ui-icon-check"/>
                 <p:button value="Cancelar"  icon="ui-icon-cancel" href="/index.xhtml"/>
             </p:panel>
         </h:form>

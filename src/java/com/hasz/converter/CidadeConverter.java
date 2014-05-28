@@ -6,6 +6,7 @@
 
 package com.hasz.converter;
 
+import com.hasz.dao.CidadeDAO;
 import com.hasz.model.Cidade;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -23,9 +24,10 @@ public class CidadeConverter implements Converter{
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if(value!=null&&!value.equals("")){
             int id= new Integer(value);
-            Cidade estado=new Cidade();
-            
-            return estado;
+//            Cidade cidade=new Cidade();
+//            cidade.setIdCidade(id);
+            Cidade cidade = CidadeDAO.buscaCidadeById(id);
+            return cidade;
         }
         return null;
     }

@@ -5,13 +5,20 @@
  */
 package com.hasz.bean;
 
+import com.hasz.dao.CidadeDAO;
 import com.hasz.dao.EstadoDAO;
+import com.hasz.dao.ClienteFisicoDAO;
+import com.hasz.dao.ClienteJuridicoDAO;
+import com.hasz.dao.EnderecoDAO;
 import com.hasz.model.Cidade;
+import com.hasz.model.Cliente;
 import com.hasz.model.ClienteFisico;
 import com.hasz.model.ClienteJuridico;
 import com.hasz.model.Endereco;
 import com.hasz.model.Estado;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -31,10 +38,10 @@ import javax.faces.validator.ValidatorException;
 @ManagedBean
 @ApplicationScoped
 public class ClienteBean {
-    private ClienteFisico clientefisico;
-    private ClienteJuridico clientejuridico;
-    private List<ClienteFisico> clientesfisicos;
-    private List<ClienteJuridico> clientesjuridicos;
+    private ClienteFisico clientefisico = new ClienteFisico();
+    private ClienteJuridico clientejuridico = new ClienteJuridico();
+    private List<ClienteFisico> clientesfisicos = new ArrayList<ClienteFisico>();
+    private List<ClienteJuridico> clientesjuridicos = new ArrayList<ClienteJuridico>();
     private String senha2;
     
     private Estado estado=new Estado();
@@ -54,66 +61,9 @@ public class ClienteBean {
     }
     
     public ClienteBean(){
-        clientefisico = new ClienteFisico();
-        clientesfisicos = new ArrayList<ClienteFisico>();
         getClientefisico().setSexo('M');
-        clientejuridico = new ClienteJuridico();
-        clientesjuridicos = new ArrayList<ClienteJuridico>();
         
-        Estado e1 = new Estado();
-        e1.setIdEstado(1);
-        e1.setNome("Acre");
-        e1.setSigla("AC");
-        
-        Estado e2 = new Estado();
-        e2.setIdEstado(2);
-        e2.setNome("Bahia");
-        e2.setSigla("BA");
-        
-        Estado e3 = new Estado();
-        e3.setIdEstado(3);
-        e3.setNome("Exterior");
-        e3.setSigla("EX");
-        
-        Cidade c1 = new Cidade();
-        c1.setIdCidade(1);
-        c1.setEstado(e1);
-        e1.getCidade().add(c1);
-        c1.setDescricao("Cidade 1_1");
-        
-        Cidade c2 = new Cidade();
-        c2.setIdCidade(2);
-        c2.setEstado(e2);
-        e2.getCidade().add(c2);
-        c2.setDescricao("Cidade 2_1");
-        
-        Cidade c3 = new Cidade();
-        c3.setIdCidade(3);
-        c3.setEstado(e2);
-        e2.getCidade().add(c3);
-        c3.setDescricao("Cidade 2_2");
-        
-        Cidade c4 = new Cidade();
-        c4.setIdCidade(4);
-        c4.setEstado(e2);
-        e2.getCidade().add(c4);
-        c4.setDescricao("Cidade 2_3");
-        
-        Cidade c5 = new Cidade();
-        c5.setIdCidade(5);
-        c5.setEstado(e3);
-        e3.getCidade().add(c5);
-        c5.setDescricao("Cidade 3_1");
-        
-        Cidade c6 = new Cidade();
-        c6.setIdCidade(6);
-        c6.setEstado(e3);
-        e3.getCidade().add(c6);
-        c6.setDescricao("Cidade 3_2");
-        
-        estados.add(e1);
-        estados.add(e2);
-        estados.add(e3);
+        estados=EstadoDAO.listarEstados();
     }
 
     /**
@@ -172,26 +122,33 @@ public class ClienteBean {
         this.clientesjuridicos = clientesjuridicos;
     }
     
-    /**
-     *
-     * @param login
-     * @param senha
-     * @return
-     */
-    public boolean validaLogin(String login, String senha) {
-        //((login.compareTo(login)==0)&&(senha.compareToIgnoreCase(senha)==0))
-        return false;
-    }
-    
-    public void insertClienteFisico(){
+    public void insertClienteFisico(AjaxBehaviorEvent event){
         ClienteFisico cf = new ClienteFisico();
         cf=clientefisico;
         if(!confirmaSenha(cf.getSenha(), senha2))
             return;
+        cidade.setEndereco(new HashSet<Endereco>(EnderecoDAO.listarEnderecoByIdCidade(cidade.getIdCidade())));
+        endereco.setCidade(cidade);
+        cidade.getEndereco().add(endereco);
+        
+        endereco.setCliente(new HashSet<Cliente>(EnderecoDAO.listarClienteByIdEndereco(endereco.getIdEndereco())));
+        cf.setEndereco(endereco);
+        endereco.getCliente().add(cf);
+        ClienteFisicoDAO.cadastrarClienteFisico(cf);
+        clientefisico=new ClienteFisico();
+        cidade = new Cidade();
+        endereco= new Endereco();
     }
     
     public void insertClienteJuridico(){
         ClienteJuridico cj = new ClienteJuridico();
+        if(!confirmaSenha(cj.getSenha(), senha2))
+            return;
+        endereco.setCidade(cidade);
+        cidade.getEndereco().add(endereco);
+        cj.setEndereco(endereco);
+        endereco.getCliente().add(cj);
+        ClienteJuridicoDAO.cadastrarClienteJuridico(cj);
     }
 
     /**
@@ -241,10 +198,8 @@ public class ClienteBean {
     }
     
     public void updateCidades(AjaxBehaviorEvent event){
-        Estado estadoAux=null;
         if(this.estado!=null){
-            estadoAux=EstadoDAO.buscarEstadoByID(this.estado.getIdEstado());
-            cidades= new ArrayList<Cidade>(estadoAux.getCidade());
+            cidades= CidadeDAO.listaCidadesByIdEstado(estado.getIdEstado());
         }
     }
 

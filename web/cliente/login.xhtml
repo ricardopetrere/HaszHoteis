@@ -5,32 +5,46 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
-        <title>Hotéis Hasz - Login</title>
-    </h:head>
-    <h:body>
-        <div>
-            <h:form>
-                <p:panel header="Login" style="width: 350px">
-                    <h:panelGrid columns="2" cellpadding="5">
+        <title>Hasz - Login</title>
 
-                        <h:outputText value="CPF:" />
-                        <p:inputMask id="txtlogin" validator="util.CpfValidator" value="#{cliente.cpf}" mask="999.999.999-99"/>
-
-                        <h:outputText value="Senha: " />
-                        <p:keyboard id="txtsenha" value=""
-                                    password="true"/>
-                        <h:commandButton title="Entrar" value="Entrar" onclick="#{clienteBean.validaLogin(txtlogin, txtsenha)}"></h:commandButton>
-                    </h:panelGrid>
-                </p:panel>
-            </h:form>
-        </div>
-        <style>
-            .alinhamento    {
-                align:center;
-                vertical-align:middle;
-            }            
+        <style type="text/css">
+            body{
+                background: url(/images/logo.jpg) no-repeat;
+            }
         </style>
 
+    </h:head>
+
+    <h:body >
+
+        <style type="alinhamento">        
+
+            #DivPrincipal{position: relative}
+
+            #DivCentro {position:absolute; top:50%; height: 10em; margin-top: -5em  }
+
+        </style>
+        <h:form>
+            <div id = "DivPrincipal">
+
+                <div align="center" id = "DivCentro">
+                    
+                    <p:panel header="Login" style="width: 350px" >
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h:outputText value="CPF:" />
+                            <p:inputMask id="txtlogin" validator="util.CpfValidator" value="#{cliente.cpf}" mask="999.999.999-99"/>
+
+                            <h:outputText value="Senha: " />
+                            <p:keyboard id="txtsenha" value=""
+                                        password="true"/>
+                            <h:commandButton title="Entrar" value="Entrar" onclick="#{clienteBean.validaLogin(txtlogin, txtsenha)}"></h:commandButton>
+                        </h:panelGrid>
+                    </p:panel>
+
+                </div> 
+            </div>  
+        </h:form>
     </h:body>
 </html>
 

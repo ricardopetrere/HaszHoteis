@@ -14,61 +14,114 @@ and open the template in the editor.
         <title>Hasz - Garanta sua reserva</title>     
     </h:head>
     <h:body>
+
         <ui:composition template="/template.xhtml">
             <ui:define name="menu">
-                <h:form>
-                    <p:panel header="Reserva" style="width: 700px">
-                        <h:panelGrid columns="3" cellpadding="5">                 
+                <p:layout>
 
-                            <h:outputLabel value="Hotel"/>
-                            <h:selectOneMenu id="cbHotel" value="#{clienteBean.estado}"
-                                             >
-                                <p:ajax event="change" listener="#{clienteBean.updateCidades}" update="cbTipoQuarto" process="cbHotel"/>
-                                <f:selectItem itemLabel="Selecione um estado" itemValue=""/>
-                                <f:selectItems value="#{clienteBean.estados}" var="estado"
-                                               itemLabel="#{estado.nome}" itemValue="#{estado.nome}"/>
-                            </h:selectOneMenu>
-                            <p:message for="cbHotel" />
+                    <p:layoutUnit position="west" resizable="false" size="800" >
 
-                            <h:outputLabel value="Tipo de Quarto"/>
-                            <h:selectOneMenu id="cbTipoQuarto" value="#{clienteBean.estado}"
-                                             >
-                                <p:ajax event="change" listener="#{clienteBean.updateCidades}" process="cbTipoQuarto"/>
-                                <f:selectItem itemLabel="Selecione um estado" itemValue=""/>
-                                <f:selectItems value="#{clienteBean.estados}" var="estado"
-                                               itemLabel="#{estado.nome}" itemValue="#{estado.nome}"/>
-                            </h:selectOneMenu>
-                            <p:message for="cbTipoQuarto" />
+                        <h:form>                      
+
+                            <p:panel header="Reserva" style="width: 700px">
+                                <h:panelGrid columns="3" cellpadding="5">                 
+
+                                    <h:outputLabel value="Hotel"/>
+                                    <h:selectOneMenu id="cbHotel" value="#{clienteBean.estado}"
+                                                     >
+                                        <p:ajax event="change" listener="#{clienteBean.updateCidades}" update="cbTipoQuarto" process="cbHotel"/>
+                                        <f:selectItem itemLabel="Selecione um estado" itemValue=""/>
+                                        <f:selectItems value="#{clienteBean.estados}" var="estado"
+                                                       itemLabel="#{estado.nome}" itemValue="#{estado.nome}"/>
+                                    </h:selectOneMenu>
+                                    <p:message for="cbHotel" />
+
+                                    <h:outputLabel value="Tipo de Quarto"/>
+                                    <h:selectOneMenu id="cbTipoQuarto" value="#{clienteBean.estado}"
+                                                     >
+                                        <p:ajax event="change" listener="#{clienteBean.updateCidades}" process="cbTipoQuarto"/>
+                                        <f:selectItem itemLabel="Selecione um estado" itemValue=""/>
+                                        <f:selectItems value="#{clienteBean.estados}" var="estado"
+                                                       itemLabel="#{estado.nome}" itemValue="#{estado.nome}"/>
+                                    </h:selectOneMenu>
+                                    <p:message for="cbTipoQuarto" />
+
+                                    <p:outputLabel for="txtDataIn" value="Data Inicial" />
+                                    <p:calendar id="txtDataIn" value="#{calendarView.dataIn}" effect="fold" />
+                                    <p:message for="txtDataIn" />
 
 
+                                    <p:outputLabel for="txtDataFim" value="Data Final" />
+                                    <p:calendar id="txtDataFim" value="#{calendarView.dataFim}" effect="fold" />
+                                    <p:message for="txtDataFim" />
 
-                            <p:outputLabel for="txtDataIn" value="Data Inicial" />
-                            <p:calendar id="txtDataIn" value="#{calendarView.dataIn}" effect="fold" />
-                            <p:message for="txtDataIn" />
+                                </h:panelGrid>
 
+                            </p:panel>
 
-                            <p:outputLabel for="txtDataFim" value="Data Final" />
-                            <p:calendar id="txtDataFim" value="#{calendarView.dataFim}" effect="fold" />
-                            <p:message for="txtDataFim" />
+                            <br></br>
 
-                        </h:panelGrid>
-                        <p:separator/>
+                            <p:panel header="Serviços" style="width: 700px">
+                                <h:panelGrid columns="1" cellpadding="5">
 
-                        <p:commandButton value="Salvar"  ajax="false" icon="ui-icon-check" />
-                        <p:button value="Cancelar"  icon="ui-icon-cancel"  href="/index.xhtml"/>
+                                    <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedServicos}" label="Selecione"
+                                                          filter="true" filterMatchMode="startsWith" panelStyle="width:300px">
+                                        <f:selectItems value="#{checkboxView.cities}" />
+                                    </p:selectCheckboxMenu>
 
-                    </p:panel>
+                                    <p:commandButton value="Confirmar" update="display" />
 
-                    <p:imageSwitch effect="fade">
-                        <ui:repeat   value="#{imageClass.images}" var="ImagemNome">
-                            <p:graphicImage value="/images/#{ImagemNome}" />
-                        </ui:repeat>
-                    </p:imageSwitch>
+                                </h:panelGrid>
 
-                </h:form>  
+                                <p:separator/>
+
+                                <font style="font-style: italic;font-size: 18px">
+                                    Selecionados:                                
+                                </font>
+
+                                <br></br>
+
+                                <p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px">
+                                    <p:dataList value="#{checkboxView.selectedServicos}" var="city" >
+                                        #{city}
+                                    </p:dataList>
+                                </p:outputPanel>
+
+                                <p:separator/>
+
+                                <p:commandButton value="Salvar"  ajax="false" icon="ui-icon-check" />
+                                <p:button value="Cancelar"  icon="ui-icon-cancel"  href="/index.xhtml"/>
+
+                            </p:panel>
+
+                        </h:form> 
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center" resizable="false">
+                        <h:form>
+
+                            <div align = "center">
+
+                                <p:outputLabel value ="Confira alguns de nossos quartos!!" style="font-weight:bold;
+                                               font-size:20px"/>
+
+                                <br></br>
+                                <br></br>
+
+                                <p:imageSwitch effect="fade">
+                                    <ui:repeat   value="#{imageClass.images}" var="ImagemNome">
+                                        <p:graphicImage value="/images/#{ImagemNome}" />
+                                    </ui:repeat>
+                                </p:imageSwitch>
+
+                            </div>
+
+                        </h:form>
+
+                    </p:layoutUnit>
+
+                </p:layout>
             </ui:define>
         </ui:composition>
-
-
     </h:body>
 </html>

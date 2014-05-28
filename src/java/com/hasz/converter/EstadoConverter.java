@@ -6,6 +6,7 @@
 
 package com.hasz.converter;
 
+import com.hasz.dao.EstadoDAO;
 import com.hasz.model.Estado;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -23,8 +24,9 @@ public class EstadoConverter implements Converter{
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if(value!=null&&!value.equals("")){
             int id= new Integer(value);
-            Estado estado=new Estado();
-            estado.setIdEstado(id);
+            //Estado estado=new Estado();
+            //estado.setIdEstado(id);
+            Estado estado = EstadoDAO.buscarEstadoById(id);
             return estado;
         }
         return null;

@@ -23,6 +23,28 @@ import org.hibernate.annotations.CascadeType;
 @Entity
 @Table(name="Cidade")
 public class Cidade implements Serializable{
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + this.idCidade;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cidade other = (Cidade) obj;
+        if (this.idCidade != other.idCidade) {
+            return false;
+        }
+        return true;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCidade")
