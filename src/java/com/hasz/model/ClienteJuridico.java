@@ -32,22 +32,6 @@ public class ClienteJuridico extends Cliente{
     @Column(length = 18)
     private String cnpj;
 
-//    /**
-//     * @return the idCliente
-//     */
-//    @Override
-//    public int getIdCliente() {
-//        return idCliente;
-//    }
-//
-//    /**
-//     * @param idCliente the idCliente to set
-//     */
-//    @Override
-//    public void setIdCliente(int idCliente) {
-//        this.idCliente = idCliente;
-//    }
-
     /**
      * @return the razaosocial
      */

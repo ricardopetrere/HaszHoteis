@@ -30,7 +30,7 @@ public class TipoQuarto implements Serializable{
     @Column(length = 100)
     private String descricao;
     
-    @OneToMany(mappedBy = "tipoQuarto",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tipoQuarto",fetch = FetchType.EAGER)
     @Cascade(CascadeType.SAVE_UPDATE)
     private Set<Quarto> quarto = new HashSet<Quarto>();
     /**

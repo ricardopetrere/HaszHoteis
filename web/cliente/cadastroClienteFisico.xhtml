@@ -110,8 +110,8 @@
                 </h:panelGrid>
                 
                 <p:commandButton value="Salvar"  ajax="false"
-                                 actionListener="#{clienteBean.insertClienteFisico(event)}"
-                                 icon="ui-icon-check"/>
+                                 actionListener="#{clienteBean.insertClienteFisico()}"
+                                 icon="ui-icon-check" update="cbEstado,cbCidade"/>
                 <p:button value="Cancelar"  icon="ui-icon-cancel" href="/index.xhtml"/>
             </p:panel>
         </h:form>

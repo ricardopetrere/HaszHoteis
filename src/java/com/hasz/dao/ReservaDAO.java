@@ -6,7 +6,8 @@
 
 package com.hasz.dao;
 
-import com.hasz.model.ClienteFisico;
+import com.hasz.model.Reserva;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
@@ -18,33 +19,13 @@ import util.HibernateUtil;
  *
  * @author Ricardo
  */
-public class ClienteFisicoDAO extends DAO{
-
-    public static void cadastrarClienteFisico(ClienteFisico cf) {
+public class ReservaDAO extends DAO{
+    public static List<Reserva> listarReservasEmAberto(){
         Session sessao = HibernateUtil.getSession();
-        Transaction t = sessao.beginTransaction();
+        List<Reserva> retorno = new ArrayList<Reserva>();
         try{
-            cf.setDataCadastro(new Date());
-            sessao.saveOrUpdate(cf);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        finally{
-            t.commit();
-            sessao.close();
-        }
-    }
-    
-    public static ClienteFisico buscarClienteFisicoById(int idCliente){
-        Session sessao = HibernateUtil.getSession();
-        ClienteFisico retorno = null;
-        try{
-            Query select = sessao.createQuery("from ClienteFisico where idCliente = :idCliente");
-            select.setInteger("idCliente", idCliente);
-            List<ClienteFisico> clientes = select.list();
-            if(clientes.size()==1)
-                retorno = clientes.get(0);
+            Query select = sessao.createQuery("from Reserva where idStatusReserva in (1,2)");
+            retorno = select.list();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -52,6 +33,22 @@ public class ClienteFisicoDAO extends DAO{
         finally{
             sessao.close();
             return retorno;
+        }
+    }
+    
+    public static void cadastrarReserva(Reserva r){
+        Session sessao = HibernateUtil.getSession();
+        Transaction t = sessao.beginTransaction();
+        try{
+            r.setData(new Date());
+            sessao.saveOrUpdate(r);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            t.commit();
+            sessao.close();
         }
     }
 }

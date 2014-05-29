@@ -9,7 +9,7 @@
         org.hibernate.dialect.SQLServerDialect
     </property>
 
-    <property name="hibernate.connection.url">jdbc:sqlserver://192.168.174.128:1433;DatabaseName=Hasz2</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://192.168.174.128:1433;DatabaseName=Hasz</property>
     <property name="hibernate.connection.username">sa</property>
     <property name="hibernate.connection.password">123</property>
     <property name="hibernate.hbm2ddl.auto">update</property>

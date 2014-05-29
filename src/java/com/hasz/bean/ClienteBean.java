@@ -17,19 +17,11 @@ import com.hasz.model.ClienteJuridico;
 import com.hasz.model.Endereco;
 import com.hasz.model.Estado;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.validator.ValidatorException;
 
 /**
  *
@@ -38,19 +30,20 @@ import javax.faces.validator.ValidatorException;
 @ManagedBean
 @ApplicationScoped
 public class ClienteBean {
+
     private ClienteFisico clientefisico = new ClienteFisico();
     private ClienteJuridico clientejuridico = new ClienteJuridico();
     private List<ClienteFisico> clientesfisicos = new ArrayList<ClienteFisico>();
     private List<ClienteJuridico> clientesjuridicos = new ArrayList<ClienteJuridico>();
     private String senha2;
-    
-    private Estado estado=new Estado();
-    private List<Estado> estados=new ArrayList<Estado>();
-    
-    private Cidade cidade=new Cidade();
-    private List<Cidade> cidades=new ArrayList<Cidade>();
-    
-    private Endereco endereco=new Endereco();
+
+    private Estado estado = new Estado();
+    private List<Estado> estados = new ArrayList<Estado>();
+
+    private Cidade cidade = new Cidade();
+    private List<Cidade> cidades = new ArrayList<Cidade>();
+
+    private Endereco endereco = new Endereco();
 
     public Endereco getEndereco() {
         return endereco;
@@ -59,11 +52,11 @@ public class ClienteBean {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
-    public ClienteBean(){
+
+    public ClienteBean() {
         getClientefisico().setSexo('M');
-        
-        estados=EstadoDAO.listarEstados();
+
+        estados = EstadoDAO.listarEstados();
     }
 
     /**
@@ -121,34 +114,39 @@ public class ClienteBean {
     public void setClientesjuridicos(List<ClienteJuridico> clientesjuridicos) {
         this.clientesjuridicos = clientesjuridicos;
     }
-    
-    public void insertClienteFisico(AjaxBehaviorEvent event){
-        ClienteFisico cf = new ClienteFisico();
-        cf=clientefisico;
-        if(!confirmaSenha(cf.getSenha(), senha2))
+
+    public void insertClienteFisico() {
+        if (!confirmaSenha(clientefisico.getSenha(), senha2)) {
             return;
+        }
         cidade.setEndereco(new HashSet<Endereco>(EnderecoDAO.listarEnderecoByIdCidade(cidade.getIdCidade())));
         endereco.setCidade(cidade);
         cidade.getEndereco().add(endereco);
-        
+
         endereco.setCliente(new HashSet<Cliente>(EnderecoDAO.listarClienteByIdEndereco(endereco.getIdEndereco())));
-        cf.setEndereco(endereco);
-        endereco.getCliente().add(cf);
-        ClienteFisicoDAO.cadastrarClienteFisico(cf);
-        clientefisico=new ClienteFisico();
+        clientefisico.setEndereco(endereco);
+        endereco.getCliente().add(clientefisico);
+        ClienteFisicoDAO.cadastrarClienteFisico(clientefisico);
+        clientefisico = new ClienteFisico();
         cidade = new Cidade();
-        endereco= new Endereco();
+        endereco = new Endereco();
     }
-    
-    public void insertClienteJuridico(){
-        ClienteJuridico cj = new ClienteJuridico();
-        if(!confirmaSenha(cj.getSenha(), senha2))
+
+    public void insertClienteJuridico() {
+        if (!confirmaSenha(clientejuridico.getSenha(), senha2)) {
             return;
+        }
+        cidade.setEndereco(new HashSet<Endereco>(EnderecoDAO.listarEnderecoByIdCidade(cidade.getIdCidade())));
         endereco.setCidade(cidade);
         cidade.getEndereco().add(endereco);
-        cj.setEndereco(endereco);
-        endereco.getCliente().add(cj);
-        ClienteJuridicoDAO.cadastrarClienteJuridico(cj);
+
+        endereco.setCliente(new HashSet<Cliente>(EnderecoDAO.listarClienteByIdEndereco(endereco.getIdEndereco())));
+        clientejuridico.setEndereco(endereco);
+        endereco.getCliente().add(clientejuridico);
+        ClienteJuridicoDAO.cadastrarClienteJuridico(clientejuridico);
+        clientejuridico = new ClienteJuridico();
+        cidade = new Cidade();
+        endereco = new Endereco();
     }
 
     /**
@@ -166,9 +164,9 @@ public class ClienteBean {
     }
 
     private boolean confirmaSenha(String senha, String senha2) {
-        return senha.compareTo(senha2)==0;
+        return senha.compareTo(senha2) == 0;
     }
-    
+
     /**
      * @return the estado
      */
@@ -196,10 +194,12 @@ public class ClienteBean {
     public void setEstados(List<Estado> estados) {
         this.estados = estados;
     }
-    
-    public void updateCidades(AjaxBehaviorEvent event){
-        if(this.estado!=null){
-            cidades= CidadeDAO.listaCidadesByIdEstado(estado.getIdEstado());
+
+    public void updateCidades(AjaxBehaviorEvent event) {
+        if (this.estado != null) {
+            cidades = CidadeDAO.listaCidadesByIdEstado(estado.getIdEstado());
+        } else {
+            cidades = new ArrayList<Cidade>();
         }
     }
 

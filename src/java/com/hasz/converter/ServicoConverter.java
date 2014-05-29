@@ -6,8 +6,8 @@
 
 package com.hasz.converter;
 
-import com.hasz.dao.CidadeDAO;
-import com.hasz.model.Cidade;
+import com.hasz.dao.ServicoDAO;
+import com.hasz.model.Servico;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -17,24 +17,23 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Ricardo
  */
-@FacesConverter(value = "cidadeConverter")
-public class CidadeConverter implements Converter{
-
+@FacesConverter(value = "servicoConverter")
+public class ServicoConverter implements Converter{
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if(value!=null&&!value.equals("")){
-            int id= new Integer(value);
-            Cidade cidade = CidadeDAO.buscaCidadeById(id);
-            return cidade;
+            int id = new Integer(value);
+            Servico servico = ServicoDAO.buscaServicoById(id);
+            return servico;
         }
         return null;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if(value instanceof Cidade){
-            Cidade cidade=(Cidade)value;
-            String retorno = String.valueOf(cidade.getIdCidade());
+        if(value instanceof Servico){
+            Servico servico = (Servico)value;
+            String retorno = String.valueOf(servico.getIdServico());
             return retorno;
         }
         return "";

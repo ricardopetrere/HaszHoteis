@@ -6,45 +6,43 @@
 
 package com.hasz.dao;
 
-import com.hasz.model.ClienteFisico;
-import java.util.Date;
+import com.hasz.model.Servico;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 /**
  *
  * @author Ricardo
  */
-public class ClienteFisicoDAO extends DAO{
+public class ServicoDAO extends DAO{
 
-    public static void cadastrarClienteFisico(ClienteFisico cf) {
+    public static Servico buscaServicoById(int idServico) {
         Session sessao = HibernateUtil.getSession();
-        Transaction t = sessao.beginTransaction();
+        Servico retorno = new Servico();
         try{
-            cf.setDataCadastro(new Date());
-            sessao.saveOrUpdate(cf);
+            Query select = sessao.createQuery("from Servico where idServico = :idServico");
+            select.setInteger("idServico", idServico);
+            List<Servico> servicos = select.list();
+            if(servicos.size()==1)
+                retorno = servicos.get(0);
         }
         catch(Exception e){
             e.printStackTrace();
         }
         finally{
-            t.commit();
             sessao.close();
+            return retorno;
         }
     }
     
-    public static ClienteFisico buscarClienteFisicoById(int idCliente){
+    public static List<Servico> listarServicos(){
         Session sessao = HibernateUtil.getSession();
-        ClienteFisico retorno = null;
+        List<Servico> retorno = null;
         try{
-            Query select = sessao.createQuery("from ClienteFisico where idCliente = :idCliente");
-            select.setInteger("idCliente", idCliente);
-            List<ClienteFisico> clientes = select.list();
-            if(clientes.size()==1)
-                retorno = clientes.get(0);
+            Query select = sessao.createQuery("from Servico");
+            retorno = select.list();
         }
         catch(Exception e){
             e.printStackTrace();

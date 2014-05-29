@@ -26,6 +26,28 @@ public class Quarto implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idQuarto;
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.idQuarto;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Quarto other = (Quarto) obj;
+        if (this.idQuarto != other.idQuarto) {
+            return false;
+        }
+        return true;
+    }
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idHotel",insertable = true,updatable = true)

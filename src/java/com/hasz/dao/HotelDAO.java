@@ -6,45 +6,45 @@
 
 package com.hasz.dao;
 
-import com.hasz.model.ClienteFisico;
-import java.util.Date;
+import com.hasz.model.Hotel;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 /**
  *
  * @author Ricardo
  */
-public class ClienteFisicoDAO extends DAO{
-
-    public static void cadastrarClienteFisico(ClienteFisico cf) {
+public class HotelDAO extends DAO{
+    
+    public static List<Hotel> listaHoteis(){
         Session sessao = HibernateUtil.getSession();
-        Transaction t = sessao.beginTransaction();
+        List<Hotel> retorno = new ArrayList<Hotel>();
         try{
-            cf.setDataCadastro(new Date());
-            sessao.saveOrUpdate(cf);
+            Query select = sessao.createQuery("from Hotel");
+            retorno = select.list();
         }
         catch(Exception e){
             e.printStackTrace();
         }
         finally{
-            t.commit();
             sessao.close();
+            return retorno;
         }
     }
     
-    public static ClienteFisico buscarClienteFisicoById(int idCliente){
+    public static Hotel buscaHotelById(int idHotel){
         Session sessao = HibernateUtil.getSession();
-        ClienteFisico retorno = null;
+        Hotel retorno = null;
         try{
-            Query select = sessao.createQuery("from ClienteFisico where idCliente = :idCliente");
-            select.setInteger("idCliente", idCliente);
-            List<ClienteFisico> clientes = select.list();
-            if(clientes.size()==1)
-                retorno = clientes.get(0);
+            Query select = sessao.createQuery("from Hotel where idHotel = :idHotel");
+            select.setInteger("idHotel", idHotel);
+            List<Hotel> hoteis = select.list();
+            if(hoteis.size()==1){
+                retorno = hoteis.get(0);
+            }
         }
         catch(Exception e){
             e.printStackTrace();
