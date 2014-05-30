@@ -181,3 +181,16 @@ public class Reserva implements Serializable{
         this.hotel = hotel;
     }
 }
+//    /**
+//     * @return the reservaservico
+//     */
+//    public Set<ReservaServico> getReservaservico() {
+//        return reservaservico;
+//    }
+//
+//    /**
+//     * @param reservaservico the reservaservico to set
+//     */
+//    public void setReservaservico(Set<ReservaServico> reservaservico) {
+//        this.reservaservico = reservaservico;
+//    }

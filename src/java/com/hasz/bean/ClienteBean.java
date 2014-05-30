@@ -126,6 +126,7 @@ public class ClienteBean {
         endereco.setCliente(new HashSet<Cliente>(EnderecoDAO.listarClienteByIdEndereco(endereco.getIdEndereco())));
         clientefisico.setEndereco(endereco);
         endereco.getCliente().add(clientefisico);
+        
         ClienteFisicoDAO.cadastrarClienteFisico(clientefisico);
         clientefisico = new ClienteFisico();
         cidade = new Cidade();

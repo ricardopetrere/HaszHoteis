@@ -18,7 +18,7 @@ import util.HibernateUtil;
  */
 public class ServicoDAO extends DAO{
 
-    public static Servico buscaServicoById(int idServico) {
+    public static Servico buscaServicoById(int idServico){
         Session sessao = HibernateUtil.getSession();
         Servico retorno = new Servico();
         try{

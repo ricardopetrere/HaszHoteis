@@ -20,20 +20,7 @@ public class TestaHibernate {
         System.out.println("Início da conexão e manipulação...");
         Session sessao = HibernateUtil.getSession();
         Transaction transaction = sessao.beginTransaction();
-        List<ClienteFisico> retorno = null;
-        try{
-            Query select = sessao.createQuery("from ClienteFisico where idCliente = 42");
-            /*
-            Query select = sessao.createQuery("from Quarto q\n" +
-"where idHotel = 1\n" +
-"and idQuarto not in\n" +
-"(select r.idQuarto from Reserva r where idStatusReserva in(1,2))");
-        */
-            retorno = select.list();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        
         transaction.commit();
         sessao.close();
         System.out.println("Término da conexão e manipulação...");

@@ -44,10 +44,10 @@ and open the template in the editor.
                                     </p:selectOneMenu>
                                     <p:message for="cbQuarto" />
                                     <p:outputLabel for="txtDataIn" value="Data Inicial" />
-                                    <p:calendar id="txtDataIn" value="#{hotelBean.reserva.dataInicio}" effect="fold" />
+                                    <p:calendar id="txtDataIn" pattern="dd/MM/yyyy" value="#{hotelBean.reserva.dataInicio}" effect="fold" />
                                     <p:message for="txtDataIn" />
                                     <p:outputLabel for="txtDataFim" value="Data Final" />
-                                    <p:calendar id="txtDataFim" value="#{hotelBean.reserva.dataFim}" effect="fold" />
+                                    <p:calendar id="txtDataFim" pattern="dd/MM/yyyy" value="#{hotelBean.reserva.dataFim}" effect="fold" />
                                     <p:message for="txtDataFim" />
                                 </h:panelGrid>
                             </p:panel>

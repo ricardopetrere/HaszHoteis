@@ -92,7 +92,7 @@ public class EstadoDAO extends DAO {
         return retorno;
     }
 
-    public static List<Estado> listarEstados() {
+    public static List<Estado> listarEstados(){
         Session sessao = HibernateUtil.getSession();
         Transaction t = sessao.beginTransaction();
         List<Estado> retorno=new ArrayList<Estado>();
@@ -111,7 +111,7 @@ public class EstadoDAO extends DAO {
         return retorno;
     }
 
-    public static Estado buscarEstadoById(int idEstado) {
+    public static Estado buscarEstadoById(int idEstado){
         Session sessao = HibernateUtil.getSession();
         Transaction t = sessao.beginTransaction();
         Estado retorno=new Estado();

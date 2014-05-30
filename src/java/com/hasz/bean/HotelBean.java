@@ -8,13 +8,17 @@ package com.hasz.bean;
 import com.hasz.dao.ClienteFisicoDAO;
 import com.hasz.dao.HotelDAO;
 import com.hasz.dao.QuartoDAO;
+import com.hasz.dao.ReservaDAO;
 import com.hasz.dao.ServicoDAO;
+import com.hasz.dao.StatusReservaDAO;
 import com.hasz.model.Cliente;
 import com.hasz.model.Hotel;
 import com.hasz.model.Quarto;
 import com.hasz.model.Reserva;
 import com.hasz.model.Servico;
+import com.hasz.model.StatusReserva;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
@@ -42,6 +46,7 @@ public class HotelBean {
         hoteis=HotelDAO.listaHoteis();
         servicos=ServicoDAO.listarServicos();
         cliente = ClienteFisicoDAO.buscarClienteFisicoById(42);
+        reserva = new Reserva();
     }
 
     public Hotel getHotel() {
@@ -77,7 +82,26 @@ public class HotelBean {
     }
     
     public void criarReserva(){
+        cliente.setReserva(new HashSet<Reserva>(ReservaDAO.listarReservasByIdCliente(cliente.getIdCliente())));
+        reserva.setCliente(cliente);
+        cliente.getReserva().add(reserva);
         
+        quarto.setReserva(new HashSet<Reserva>(ReservaDAO.listarReservasByIdQuarto(quarto.getIdQuarto())));
+        reserva.setQuarto(quarto);
+        quarto.getReserva().add(reserva);
+        
+        hotel.setReserva(new HashSet<Reserva>(ReservaDAO.listarReservasByIdHotel(hotel.getIdHotel())));
+        reserva.setHotel(hotel);
+        hotel.getReserva().add(reserva);
+        
+        reserva.setStatusReserva(StatusReservaDAO.buscaStatusReservaById(1));//reservado
+        
+        ReservaDAO.cadastrarReserva(reserva,servicosselecionados);
+        reserva=new Reserva();
+        //this.cliente=new Cliente();
+        hotel=new Hotel();
+        quarto=new Quarto();
+        servicosselecionados=new ArrayList<Servico>();
     }
 
     /**

@@ -27,28 +27,6 @@ public class Servico implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idServico")
     private int idServico;
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + this.idServico;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Servico other = (Servico) obj;
-        if (this.idServico != other.idServico) {
-            return false;
-        }
-        return true;
-    }
     
     @Column(length = 100)
     private String descricao;
@@ -99,3 +77,18 @@ public class Servico implements Serializable{
         this.alteracaoPrecoServico = alteracaoPrecoServico;
     }
 }
+
+
+//    /**
+//     * @return the reservaservico
+//     */
+//    public Set<ReservaServico> getReservaservico() {
+//        return reservaservico;
+//    }
+//
+//    /**
+//     * @param reservaservico the reservaservico to set
+//     */
+//    public void setReservaservico(Set<ReservaServico> reservaservico) {
+//        this.reservaservico = reservaservico;
+//    }

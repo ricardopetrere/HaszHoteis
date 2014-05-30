@@ -72,7 +72,7 @@ public class QuartoDAO extends DAO{
         }
     }
 
-    public static Quarto buscaQuartoById(int idQuarto) {
+    public static Quarto buscaQuartoById(int idQuarto){
         Session sessao = HibernateUtil.getSession();
         Quarto retorno = null;
         try{
